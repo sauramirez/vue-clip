@@ -266,13 +266,14 @@ component.methods.removedFile = function ({ blobId }) {
  * Listens for sending event and calls onSending
  * prop
  *
- * @param  {Symbol} options.blobId
+ * @param  {Object} file
  * @param  {Object} xhr
  * @param  {Object} formData
  */
-component.methods.sending = function ({ blobId }, xhr, formData) {
+component.methods.sending = function (file, xhr, formData) {
+  const blobId = file.blobId
   const fileInstance = this.getFile(blobId)
-  this.onSending(fileInstance, xhr, formData)
+  this.onSending(fileInstance, xhr, formData, file)
 }
 
 /**
